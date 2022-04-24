@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5280DDF92815FF2500006A2C /* ORSSerialPortManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5280DDF82815FF2500006A2C /* ORSSerialPortManagerTests.swift */; };
 		9D64D0E71B9CBC99009D1AEB /* ORSSerialBuffer.h in Headers */ = {isa = PBXBuildFile; fileRef = 9D64D0E51B9CBC99009D1AEB /* ORSSerialBuffer.h */; };
 		9D64D0E81B9CBC99009D1AEB /* ORSSerialBuffer.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D64D0E61B9CBC99009D1AEB /* ORSSerialBuffer.m */; };
 		9D7472181B6D7767002D8B10 /* ORSSerialPort_Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D7472171B6D7767002D8B10 /* ORSSerialPort_Tests.m */; };
@@ -36,6 +37,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		5280DDF72815FF2500006A2C /* ORSSerialPort Tests-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ORSSerialPort Tests-Bridging-Header.h"; sourceTree = "<group>"; };
+		5280DDF82815FF2500006A2C /* ORSSerialPortManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ORSSerialPortManagerTests.swift; sourceTree = "<group>"; };
 		9D64D0E51B9CBC99009D1AEB /* ORSSerialBuffer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ORSSerialBuffer.h; sourceTree = "<group>"; };
 		9D64D0E61B9CBC99009D1AEB /* ORSSerialBuffer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ORSSerialBuffer.m; sourceTree = "<group>"; };
 		9D7472131B6D7767002D8B10 /* ORSSerialPort Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "ORSSerialPort Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -90,8 +93,10 @@
 		9D7472141B6D7767002D8B10 /* ORSSerialPort Tests */ = {
 			isa = PBXGroup;
 			children = (
-				9D7472171B6D7767002D8B10 /* ORSSerialPort_Tests.m */,
 				9D74721F1B6D7787002D8B10 /* ORSSerialPacketDescriptor_Tests.m */,
+				5280DDF72815FF2500006A2C /* ORSSerialPort Tests-Bridging-Header.h */,
+				9D7472171B6D7767002D8B10 /* ORSSerialPort_Tests.m */,
+				5280DDF82815FF2500006A2C /* ORSSerialPortManagerTests.swift */,
 				9D7472151B6D7767002D8B10 /* Supporting Files */,
 			);
 			path = "ORSSerialPort Tests";
@@ -226,6 +231,7 @@
 				TargetAttributes = {
 					9D7472121B6D7767002D8B10 = {
 						CreatedOnToolsVersion = 6.4;
+						LastSwiftMigration = 1330;
 					};
 					9DCA89111A2BB106009285EB = {
 						CreatedOnToolsVersion = 6.1;
@@ -274,6 +280,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				9D7472201B6D7787002D8B10 /* ORSSerialPacketDescriptor_Tests.m in Sources */,
+				5280DDF92815FF2500006A2C /* ORSSerialPortManagerTests.swift in Sources */,
 				9D7472181B6D7767002D8B10 /* ORSSerialPort_Tests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -304,6 +311,7 @@
 		9D74721C1B6D7767002D8B10 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -319,12 +327,16 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.openreelsoftware.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "ORSSerialPort Tests/ORSSerialPort Tests-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
 			};
 			name = Debug;
 		};
 		9D74721D1B6D7767002D8B10 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				COMBINE_HIDPI_IMAGES = YES;
 				COPY_PHASE_STRIP = NO;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -336,6 +348,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.openreelsoftware.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "ORSSerialPort Tests/ORSSerialPort Tests-Bridging-Header.h";
+				SWIFT_VERSION = 5.0;
 			};
 			name = Release;
 		};
@@ -438,7 +452,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 10.8;
+				MACOSX_DEPLOYMENT_TARGET = 10.9;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = macosx;
 				VERSIONING_SYSTEM = "apple-generic";

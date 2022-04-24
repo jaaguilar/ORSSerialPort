@@ -695,7 +695,14 @@ static __strong NSMutableArray *allSerialPorts;
 	CFDictionaryAddValue(matchingDict, CFSTR(kIOSerialBSDTypeKey), CFSTR(kIOSerialBSDAllTypes));
 	
 	io_iterator_t portIterator = 0;
-	kern_return_t err = IOServiceGetMatchingServices(kIOMasterPortDefault, matchingDict, &portIterator);
+    mach_port_t machPort;
+    if (@available(macOS 12, *)) {
+        machPort = kIOMainPortDefault;
+    } else {
+        machPort = kIOMasterPortDefault;
+    }
+    
+    kern_return_t err = IOServiceGetMatchingServices(machPort, matchingDict, &portIterator);
 	CFRelease(matchingDict);
 	if (err) return 0;
 	

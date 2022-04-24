@@ -219,7 +219,14 @@ static ORSSerialPortManager *sharedInstance = nil;
 
 - (void)retrieveAvailablePortsAndRegisterForChangeNotifications;
 {
-	IONotificationPortRef notificationPort = IONotificationPortCreate(kIOMasterPortDefault);
+    mach_port_t machPort;
+    if (@available(macOS 12, *)) {
+        machPort = kIOMainPortDefault;
+    } else {
+        machPort = kIOMasterPortDefault;
+    }
+    
+    IONotificationPortRef notificationPort = IONotificationPortCreate(machPort);
 	CFRunLoopAddSource(CFRunLoopGetCurrent(),
 					   IONotificationPortGetRunLoopSource(notificationPort),
 					   kCFRunLoopDefaultMode);
@@ -261,7 +268,7 @@ static ORSSerialPortManager *sharedInstance = nil;
 	self.availablePorts = ports;
 	
 	// Also register for removal
-	IONotificationPortRef terminationNotificationPort = IONotificationPortCreate(kIOMasterPortDefault);
+    IONotificationPortRef terminationNotificationPort = IONotificationPortCreate(machPort);
 	CFRunLoopAddSource(CFRunLoopGetCurrent(),
 					   IONotificationPortGetRunLoopSource(terminationNotificationPort),
 					   kCFRunLoopDefaultMode);
