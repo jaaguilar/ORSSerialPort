@@ -7,7 +7,7 @@
 //
 
 import XCTest
-@testable import ORSSerial
+import ORSSerial
 
 class ORSSerialPortManagerTests: XCTestCase {
 
