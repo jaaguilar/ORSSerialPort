@@ -71,32 +71,3 @@
 }
 
 @end
-
-@implementation ORSSerialRequest (Deprecated)
-
-+ (instancetype)requestWithDataToSend:(NSData *)dataToSend
-							 userInfo:(id)userInfo
-					  timeoutInterval:(NSTimeInterval)timeout
-					responseEvaluator:(ORSSerialPacketEvaluator)responseEvaluator;
-{
-	return [[self alloc] initWithDataToSend:dataToSend userInfo:userInfo timeoutInterval:timeout responseEvaluator:responseEvaluator];
-}
-- (instancetype)initWithDataToSend:(NSData *)dataToSend
-						  userInfo:(id)userInfo
-				   timeoutInterval:(NSTimeInterval)timeout
-				 responseEvaluator:(ORSSerialPacketEvaluator)responseEvaluator;
-{
-	ORSSerialPacketDescriptor *descriptor = [[ORSSerialPacketDescriptor alloc] initWithMaximumPacketLength:NSIntegerMax
-																								  userInfo:nil
-																						 responseEvaluator:responseEvaluator];
-	return [self initWithDataToSend:dataToSend userInfo:userInfo timeoutInterval:timeout responseDescriptor:descriptor];
-}
-
-- (BOOL)dataIsValidResponse:(NSData *)responseData
-{
-	if (!self.responseDescriptor) return YES;
-	
-	return [self.responseDescriptor dataIsValidPacket:responseData];
-}
-
-@end
